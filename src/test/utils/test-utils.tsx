@@ -1,5 +1,18 @@
 import { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import { 
+  render as rtlRender,
+  RenderOptions,
+  act,
+  cleanup,
+  renderHook
+} from '@testing-library/react';
+import {
+  screen,
+  waitFor,
+  within,
+  waitForElementToBeRemoved,
+  fireEvent
+} from '@testing-library/dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -35,9 +48,20 @@ const AllTheProviders = ({ children }: AllTheProvidersProps) => {
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) => render(ui, { wrapper: AllTheProviders, ...options });
+) => rtlRender(ui, { wrapper: AllTheProviders, ...options });
 
-// Re-export everything from React Testing Library
-export * from '@testing-library/react';
+// Re-export utilities from React Testing Library
 export { default as userEvent } from '@testing-library/user-event';
+export {
+  screen,
+  waitFor,
+  within,
+  waitForElementToBeRemoved,
+  fireEvent,
+  act,
+  cleanup,
+  renderHook
+};
+
+// Export our custom render
 export { customRender as render };
