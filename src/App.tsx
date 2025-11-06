@@ -7,11 +7,14 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Puzzles from "./pages/Puzzles";
+import PuzzlePage from "./pages/PuzzlePage";
 import Games from "./pages/Games";
 import Brainstorm from "./pages/Brainstorm";
 import Learn from "./pages/Learn";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,11 +31,14 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/puzzles" element={<Puzzles />} />
+              <Route path="/puzzle/:puzzleId" element={<PuzzlePage />} />
               <Route path="/games" element={<Games />} />
               <Route path="/brainstorm" element={<Brainstorm />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

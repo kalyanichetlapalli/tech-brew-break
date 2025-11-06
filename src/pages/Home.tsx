@@ -13,25 +13,31 @@ const Home = () => {
           <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
               <Coffee className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Brew Your Mind with Tech Fun</span>
+              <span className="text-sm font-medium text-primary">
+                Brew Your Mind with Tech Fun
+              </span>
             </div>
-            
+
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
               Refresh Your Mind
               <br />
               <span className="bg-brew-gradient bg-clip-text text-transparent">
-                During Your Break
+                With Tech
               </span>
             </h1>
-            
+
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Interactive puzzles, mini games, and bite-sized learning designed for busy professionals.
-              Take a meaningful break that sharpens your tech skills.
+              Interactive puzzles, mini games, and bite-sized learning designed
+              for busy professionals. Take a meaningful break that sharpens your
+              tech skills.
             </p>
-            
+
             <div className="flex flex-wrap gap-4 justify-center pt-4">
               <Link to="/puzzles">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 shadow-glow">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 shadow-glow"
+                >
                   <Brain className="w-5 h-5 mr-2" />
                   Start Puzzling
                 </Button>
@@ -62,11 +68,12 @@ const Home = () => {
                 </span>
               </div>
               <p className="text-muted-foreground mb-4">
-                Debug this JavaScript function that should return the sum of all even numbers in an array:
+                Debug this JavaScript function that should return the sum of all
+                even numbers in an array:
               </p>
               <pre className="bg-muted p-4 rounded-lg mb-4 overflow-x-auto">
                 <code className="text-sm">
-{`function sumEvens(arr) {
+                  {`function sumEvens(arr) {
   let sum = 0;
   for (let i = 0; i <= arr.length; i++) {
     if (arr[i] % 2 = 0) {
@@ -94,7 +101,8 @@ const Home = () => {
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <Lightbulb className="w-12 h-12 mx-auto opacity-90" />
             <blockquote className="text-2xl font-medium italic">
-              "The only way to learn a new programming language is by writing programs in it."
+              "The only way to learn a new programming language is by writing
+              programs in it."
             </blockquote>
             <cite className="text-sm opacity-90">— Dennis Ritchie</cite>
           </div>
@@ -105,7 +113,9 @@ const Home = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">What's Brewing?</h2>
-          <p className="text-muted-foreground">Choose your flavor of tech refreshment</p>
+          <p className="text-muted-foreground">
+            Choose your flavor of tech refreshment
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -116,7 +126,8 @@ const Home = () => {
               </div>
               <h3 className="font-bold text-lg mb-2">Puzzles</h3>
               <p className="text-sm text-muted-foreground">
-                Logic challenges and coding riddles to sharpen your problem-solving skills
+                Logic challenges and coding riddles to sharpen your
+                problem-solving skills
               </p>
             </Card>
           </Link>
@@ -128,7 +139,8 @@ const Home = () => {
               </div>
               <h3 className="font-bold text-lg mb-2">Tech Games</h3>
               <p className="text-sm text-muted-foreground">
-                Quick, fun mini-games that make learning tech concepts entertaining
+                Quick, fun mini-games that make learning tech concepts
+                entertaining
               </p>
             </Card>
           </Link>
@@ -140,7 +152,8 @@ const Home = () => {
               </div>
               <h3 className="font-bold text-lg mb-2">Brainstorm</h3>
               <p className="text-sm text-muted-foreground">
-                Creative "what if" scenarios to spark innovation and creative thinking
+                Creative "what if" scenarios to spark innovation and creative
+                thinking
               </p>
             </Card>
           </Link>

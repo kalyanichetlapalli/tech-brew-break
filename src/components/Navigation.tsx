@@ -1,19 +1,29 @@
 import { Link, useLocation } from "react-router-dom";
-import { Coffee, Moon, Sun } from "lucide-react";
+import { Coffee, Moon, Sun, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navigation = () => {
   const location = useLocation();
   const [isDark, setIsDark] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
+    const isDarkMode = document.documentElement.classList.contains("dark");
     setIsDark(isDarkMode);
   }, []);
 
   const toggleTheme = () => {
-    document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle("dark");
     setIsDark(!isDark);
   };
 
@@ -54,18 +64,65 @@ const Navigation = () => {
             ))}
           </div>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleTheme}
-            className="rounded-full hover:bg-muted"
-          >
-            {isDark ? (
-              <Sun className="w-5 h-5 text-accent" />
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="rounded-full hover:bg-muted"
+            >
+              {isDark ? (
+                <Sun className="w-5 h-5 text-accent" />
+              ) : (
+                <Moon className="w-5 h-5 text-primary" />
+              )}
+            </Button>
+
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="relative h-8 w-8 rounded-full"
+                  >
+                    <Avatar className="h-8 w-8">
+                      <AvatarFallback>
+                        <User className="h-4 w-4" />
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end" forceMount>
+                  <div className="flex flex-col space-y-1 p-2">
+                    <p className="text-sm font-medium leading-none">
+                      {user.email}
+                    </p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {user.email_confirmed_at
+                        ? "Verified"
+                        : "Pending verification"}
+                    </p>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile" className="w-full">
+                      <User className="mr-2 h-4 w-4" />
+                      Profile
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={signOut}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Sign out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
-              <Moon className="w-5 h-5 text-primary" />
+              <Button asChild variant="default" size="sm">
+                <Link to="/auth">Sign In</Link>
+              </Button>
             )}
-          </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
