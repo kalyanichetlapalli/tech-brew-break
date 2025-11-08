@@ -1,13 +1,8 @@
-import { createClient } from '@supabase/supabase-js'
+// Import the auto-generated Supabase client
+// This client is pre-configured with the correct environment variables
+import { supabase } from '@/integrations/supabase/client'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export { supabase }
 
 // Auth helper functions
 export const auth = {
