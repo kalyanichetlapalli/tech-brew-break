@@ -1,8 +1,15 @@
-// Import the auto-generated Supabase client
-// This client is pre-configured with the correct environment variables
-import { supabase } from '@/integrations/supabase/client'
+import { createClient } from '@supabase/supabase-js'
 
-export { supabase }
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://cmfmwfjkkudasmwjqeyy.supabase.co'
+const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtZm13Zmpra3VkYXNtd2pxZXl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNTUyNzcsImV4cCI6MjA3NzgzMTI3N30.28ChHAGoFrJPgKFj1DT0nmOmuyQD2-JYXnouX76xHZs'
+
+export const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    storage: localStorage,
+    persistSession: true,
+    autoRefreshToken: true,
+  }
+})
 
 // Auth helper functions
 export const auth = {
