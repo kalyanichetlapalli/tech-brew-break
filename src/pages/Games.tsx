@@ -2,43 +2,44 @@ import { Gamepad2, Target, Zap, Trophy, Puzzle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const Games = () => {
   const games = [
     {
-      id: 1,
-      title: "Bug Crusher",
-      description: "Race against time to squash bugs in the code before they multiply!",
-      icon: Target,
+      id: "typing-race",
+      title: "Typing Race",
+      description: "Race against time to type code snippets accurately and quickly",
+      icon: Trophy,
       players: "1,234",
       duration: "5 min",
-      color: "from-red-500 to-orange-500"
-    },
-    {
-      id: 2,
-      title: "Code Match",
-      description: "Match code snippets with their outputs in this memory-based game",
-      icon: Puzzle,
-      players: "892",
-      duration: "3 min",
       color: "from-blue-500 to-cyan-500"
     },
     {
-      id: 3,
-      title: "Logic Labyrinth",
-      description: "Navigate through algorithmic mazes using boolean logic",
-      icon: Zap,
-      players: "2,145",
-      duration: "7 min",
+      id: "debug-detective",
+      title: "Debug Detective",
+      description: "Find and fix bugs in code snippets to sharpen your debugging skills",
+      icon: Target,
+      players: "892",
+      duration: "10 min",
       color: "from-purple-500 to-pink-500"
     },
     {
-      id: 4,
-      title: "Syntax Sprint",
-      description: "Type code snippets as fast as you can without errors",
-      icon: Trophy,
+      id: "code-golf",
+      title: "Code Golf",
+      description: "Write the shortest code possible to solve challenges",
+      icon: Zap,
+      players: "2,145",
+      duration: "15 min",
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      id: "algorithm-arena",
+      title: "Algorithm Arena",
+      description: "Battle other players in real-time algorithm challenges",
+      icon: Puzzle,
       players: "3,421",
-      duration: "2 min",
+      duration: "20 min",
       color: "from-green-500 to-emerald-500"
     }
   ];
@@ -112,8 +113,10 @@ const Games = () => {
                       </span>
                     </div>
                     
-                    <Button className="w-full bg-primary hover:bg-primary/90">
-                      Play Now
+                    <Button className="w-full bg-primary hover:bg-primary/90" asChild>
+                      <Link to={`/game/${game.id}`}>
+                        Play Now
+                      </Link>
                     </Button>
                   </div>
                 </div>

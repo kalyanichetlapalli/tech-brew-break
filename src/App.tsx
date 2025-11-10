@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Puzzles from "./pages/Puzzles";
 import PuzzlePage from "./pages/PuzzlePage";
 import Games from "./pages/Games";
+import GamePage from "./pages/GamePage";
 import Brainstorm from "./pages/Brainstorm";
 import Learn from "./pages/Learn";
 import About from "./pages/About";
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/puzzles" element={<Puzzles />} />
               <Route path="/puzzle/:puzzleId" element={<PuzzlePage />} />
               <Route path="/games" element={<Games />} />
+              <Route path="/game/:gameId" element={<GamePage />} />
               <Route path="/brainstorm" element={<Brainstorm />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/about" element={<About />} />
